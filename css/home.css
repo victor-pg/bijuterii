@@ -1,0 +1,43 @@
+nav{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.nav-list li a{
+		color:#62625F;
+}
+.box {
+	text-align: right;
+	margin-right: 20px;
+}
+.introduction{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.introduction-text{
+	margin-left: 100px;
+}
+.introduction-text button {
+	margin-top: 40px;
+	background-color: white;
+	padding:10px;
+	border:1px solid grey;
+	border-radius: 5px;
+	font-family: 'Roboto',sans-serif;
+}
+.introduction-text button a{
+	color:black;
+}
+.introduction-text h1{
+	font-family: 'Playfair Display';
+	font-size: 60px;
+
+}
+.introduction-image img {
+	width: 550px
+}
+
+
+
