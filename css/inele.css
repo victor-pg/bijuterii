@@ -1,0 +1,30 @@
+@import 'default.css';
+.cards{
+	display: flex;
+	justify-content: space-evenly;
+	flex-flow: row wrap;
+	text-align: center;
+}
+.card{
+	margin-top:60px;
+	width: 25%;
+	font-family: 'Open Sans',sans-serif;
+}
+.card-text-block{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.card-text-block div p {
+	color:#666666;
+}
+.card-text-block img:last-child{
+	max-width: 16px;
+	max-height: 17px;
+	border:2px solid darkgrey;
+	padding: 10px;
+	border-radius: 5px;
+}
+.card-text-block img:last-child:hover{
+	cursor: pointer;
+}
