@@ -50,3 +50,11 @@ nav{
 	width: 143.98px;
 	height: 136px;
 }
+.delimitator{
+	border: 0;
+  clear:both;
+  display:block;
+	width: 100px;
+  background-color:#D8D6D0;
+  height: 1px;
+}

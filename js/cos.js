@@ -1,4 +1,4 @@
-const earrings = [
+const cercei = [
 	{
 		id:0,
 		name:'1/10 CT. T.W. Diamond Solitaire Stud',
@@ -50,33 +50,47 @@ const earrings = [
 
 ]
 
-const cards = document.querySelector('.cards');
-let cardIds=[];
-for(let i=0;i<earrings.length;i++){
+// const buttons = document.querySelectorAll('img.productCercei');
+// let ids=[];
+// for(let i=0;i<buttons.length;i++){
+// 	buttons[i].onclick=function(){
+// 		ids.push(buttons[i].getAttribute('earringId'));
+// 		window.localStorage.setItem('cos',JSON.strtingify(ids));
+// 	}
+// }
+// const dici = document.querySelector('.dici');
+
+const ids = JSON.parse(localStorage.getItem('cos'));
+const dici = document.querySelector('.dici');
+
+for(let i=0;i<ids.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${earrings[i].imgUrl}`);
+	img.setAttribute('src',`${cercei[ids[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=earrings[i].name;
+	ringName.innerHTML=cercei[ids[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=earrings[i].price;
+	price.innerHTML=cercei[ids[i]].price;
 	let icon = document.createElement('img');
-	icon.setAttribute('src','../img/icons/addToCart.png');
+	icon.setAttribute('src','../img/icons/delete.png');
 	icon.setAttribute('class','productCercei')
-	icon.setAttribute('earringId',`${earrings[i].id}`);
 	icon.style.margin=0;
-	
+
 	icon.onclick=function(){
-		cardIds.push(earrings[i].id);
-		localStorage.setItem('cos',JSON.stringify(cardIds))
+		const before = ids.slice(0,i);
+		const after = ids.slice(i+1);
+		const full= before.concat(after);
+		localStorage.setItem('cos',JSON.stringify(full));
+		location.reload();
 	}
+
 
 	text.appendChild(ringName);
 	text.appendChild(price);
@@ -85,5 +99,5 @@ for(let i=0;i<earrings.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	cards.appendChild(card);
+	dici.appendChild(card);
 }
