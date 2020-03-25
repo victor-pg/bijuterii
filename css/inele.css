@@ -28,3 +28,12 @@
 .card-text-block img:last-child:hover{
 	cursor: pointer;
 }
+.box {
+	text-align: right;
+}
+.box img{
+	margin: 0;
+	position: fixed;
+	top: 5%;
+	right: 10px;
+}
