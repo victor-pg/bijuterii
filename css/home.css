@@ -1,3 +1,6 @@
+body{
+	overflow: hidden;
+}
 .nav-list li a{
 		color:#62625F;
 }
@@ -32,6 +35,5 @@
 .introduction-image img {
 	/* width: 550px; */
 }
-
 
 
