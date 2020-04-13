@@ -31,34 +31,37 @@ const bratara = [
     }
 ]
 
+const idsBratari = JSON.parse(localStorage.getItem('cosBratari'));
+const cardsBratari = document.querySelector('.cardsBratari');
 
-const cards = document.querySelector('.cards');
-let cardIds=[];
-for(let i=0;i<bratara.length;i++){
+for(let i=0;i<idsBratari.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${bratara[i].imgUrl}`);
+	img.setAttribute('src',`${bratara[idsBratari[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=bratara[i].name;
+	ringName.innerHTML=bratara[idsBratari[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=bratara[i].price;
+	price.innerHTML=bratara[idsBratari[i]].price;
 	let icon = document.createElement('img');
-	icon.setAttribute('src','../img/icons/addToCart.png');
-	icon.setAttribute('class','productCercei')
-	icon.setAttribute('earringId',`${bratara[i].id}`);
+	icon.setAttribute('src','../img/icons/delete.png');
+	icon.setAttribute('class','productInele')
 	icon.style.margin=0;
-	
+
 	icon.onclick=function(){
-		cardIds.push(bratara[i].id);
-		localStorage.setItem('cosBratari',JSON.stringify(cardIds))
+		const before = idsBratari.slice(0,i);
+		const after = idsBratari.slice(i+1);
+		const full = before.concat(after);
+		localStorage.setItem('cosBratari',JSON.stringify(full));
+		location.reload();
 	}
+
 
 	text.appendChild(ringName);
 	text.appendChild(price);
@@ -67,5 +70,7 @@ for(let i=0;i<bratara.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	cards.appendChild(card);
+	cardsBratari.appendChild(card);
 }
+
+

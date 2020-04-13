@@ -13,33 +13,38 @@ const brose = [
     }
 ]
 
-const cards = document.querySelector('.cards');
-let cardIds=[];
-for(let i=0;i<brose.length;i++){
+
+const idsBrose = JSON.parse(localStorage.getItem('cosBrose'));
+const cardsBrose = document.querySelector('.cardsBrose');
+
+for(let i=0;i<idsBrose.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${brose[i].imgUrl}`);
+	img.setAttribute('src',`${brose[idsBrose[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=brose[i].name;
+	ringName.innerHTML=brose[idsBrose[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=brose[i].price;
+	price.innerHTML=brose[idsBrose[i]].price;
 	let icon = document.createElement('img');
-	icon.setAttribute('src','../img/icons/addToCart.png');
-	icon.setAttribute('class','productCercei')
-	icon.setAttribute('earringId',`${brose[i].id}`);
+	icon.setAttribute('src','../img/icons/delete.png');
+	icon.setAttribute('class','productBrose')
 	icon.style.margin=0;
-	
+
 	icon.onclick=function(){
-		cardIds.push(brose[i].id);
-		localStorage.setItem('cosBrose',JSON.stringify(cardIds))
+		const before = idsBrose.slice(0,i);
+		const after = idsBrose.slice(i+1);
+		const full = before.concat(after);
+		localStorage.setItem('cosBrose',JSON.stringify(full));
+		location.reload();
 	}
+
 
 	text.appendChild(ringName);
 	text.appendChild(price);
@@ -48,5 +53,5 @@ for(let i=0;i<brose.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	cards.appendChild(card);
+	cardsBrose.appendChild(card);
 }

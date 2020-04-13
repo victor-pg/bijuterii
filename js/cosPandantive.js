@@ -1,4 +1,4 @@
-const pandantiv = [
+const pandantive = [
     {
         id:0,
         name:'Diamond Accent Elephant Pendant in',
@@ -43,33 +43,38 @@ const pandantiv = [
     }
 ]
 
-const cards = document.querySelector('.cards');
-let cardIds=[];
-for(let i=0;i<pandantiv.length;i++){
+
+const idsPandantive = JSON.parse(localStorage.getItem('cosPandantive'));
+const cardsPandantive = document.querySelector('.cardsPandantive');
+
+for(let i=0;i<idsPandantive.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${pandantiv[i].imgUrl}`);
+	img.setAttribute('src',`${pandantive[idsPandantive[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=pandantiv[i].name;
+	ringName.innerHTML=pandantive[idsPandantive[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=pandantiv[i].price;
+	price.innerHTML=pandantive[idsPandantive[i]].price;
 	let icon = document.createElement('img');
-	icon.setAttribute('src','../img/icons/addToCart.png');
-	icon.setAttribute('class','productCercei')
-	icon.setAttribute('earringId',`${pandantiv[i].id}`);
+	icon.setAttribute('src','../img/icons/delete.png');
+	icon.setAttribute('class','productPandantive')
 	icon.style.margin=0;
-	
+
 	icon.onclick=function(){
-		cardIds.push(pandantiv[i].id);
-		localStorage.setItem('cosPandantive',JSON.stringify(cardIds))
+		const before = idsPandantive.slice(0,i);
+		const after = idsPandantive.slice(i+1);
+		const full = before.concat(after);
+		localStorage.setItem('cosPandantive',JSON.stringify(full));
+		location.reload();
 	}
+
 
 	text.appendChild(ringName);
 	text.appendChild(price);
@@ -78,5 +83,5 @@ for(let i=0;i<pandantiv.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	cards.appendChild(card);
+	cardsPandantive.appendChild(card);
 }

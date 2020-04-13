@@ -58,3 +58,11 @@ nav{
   background-color:#D8D6D0;
   height: 1px;
 }
+.card img:first-child{
+	transition: transform 1s ease;
+	overflow: hidden;
+}
+.card img:first-child:hover{
+	transform: scale(1.1) rotate(5deg);
+	cursor: pointer;
+}

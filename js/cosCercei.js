@@ -50,44 +50,35 @@ const cercei = [
 
 ]
 
-// const buttons = document.querySelectorAll('img.productCercei');
-// let ids=[];
-// for(let i=0;i<buttons.length;i++){
-// 	buttons[i].onclick=function(){
-// 		ids.push(buttons[i].getAttribute('earringId'));
-// 		window.localStorage.setItem('cos',JSON.strtingify(ids));
-// 	}
-// }
-// const dici = document.querySelector('.dici');
 
-const ids = JSON.parse(localStorage.getItem('cos'));
-const dici = document.querySelector('.dici');
+const idsCercei = JSON.parse(localStorage.getItem('cosCercei'));
+const cardsCercei = document.querySelector('.cardsCercei');
 
-for(let i=0;i<ids.length;i++){
+for(let i=0;i<idsCercei.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${cercei[ids[i]].imgUrl}`);
+	img.setAttribute('src',`${cercei[idsCercei[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=cercei[ids[i]].name;
+	ringName.innerHTML=cercei[idsCercei[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=cercei[ids[i]].price;
+	price.innerHTML=cercei[idsCercei[i]].price;
 	let icon = document.createElement('img');
 	icon.setAttribute('src','../img/icons/delete.png');
 	icon.setAttribute('class','productCercei')
 	icon.style.margin=0;
 
 	icon.onclick=function(){
-		const before = ids.slice(0,i);
-		const after = ids.slice(i+1);
-		const full= before.concat(after);
-		localStorage.setItem('cos',JSON.stringify(full));
+		const before = idsCercei.slice(0,i);
+		const after = idsCercei.slice(i+1);
+		const full = before.concat(after);
+		localStorage.setItem('cosCercei',JSON.stringify(full));
 		location.reload();
 	}
 
@@ -99,5 +90,5 @@ for(let i=0;i<ids.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	dici.appendChild(card);
+	cardsCercei.appendChild(card);
 }

@@ -75,7 +75,7 @@ for(let i=0;i<earrings.length;i++){
 	
 	icon.onclick=function(){
 		cardIds.push(earrings[i].id);
-		localStorage.setItem('cos',JSON.stringify(cardIds))
+		localStorage.setItem('cosCercei',JSON.stringify(cardIds))
 	}
 
 	text.appendChild(ringName);

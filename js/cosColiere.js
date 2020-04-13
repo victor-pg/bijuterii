@@ -1,4 +1,4 @@
-const necklace = [
+const coliere = [
 	{
 		id:0,
 		name:'Script Name Necklace in Sterling Silver',
@@ -37,34 +37,38 @@ const necklace = [
 	}
 ]
 
-const cards = document.querySelector('.cards');
-let cardIds=[];
-for(let i=0;i<necklace.length;i++){
+
+const idsColiere = JSON.parse(localStorage.getItem('cosColiere'));
+const cardsColiere = document.querySelector('.cardsColiere');
+
+for(let i=0;i<idsColiere.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${necklace[i].imgUrl}`);
+	img.setAttribute('src',`${coliere[idsColiere[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=necklace[i].name;
+	ringName.innerHTML=coliere[idsColiere[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=necklace[i].price;
+	price.innerHTML=coliere[idsColiere[i]].price;
 	let icon = document.createElement('img');
-	icon.setAttribute('src','../img/icons/addToCart.png');
-	icon.setAttribute('class','productCercei')
-	icon.setAttribute('earringId',`${necklace[i].id}`);
+	icon.setAttribute('src','../img/icons/delete.png');
+	icon.setAttribute('class','productColiere')
 	icon.style.margin=0;
-	
+
 	icon.onclick=function(){
-		cardIds.push(necklace[i].id);
-		localStorage.setItem('cosColiere',JSON.stringify(cardIds))
+		const before = idsColiere.slice(0,i);
+		const after = idsColiere.slice(i+1);
+		const full = before.concat(after);
+		localStorage.setItem('cosColiere',JSON.stringify(full));
+		location.reload();
 	}
-	
+
 
 	text.appendChild(ringName);
 	text.appendChild(price);
@@ -73,5 +77,5 @@ for(let i=0;i<necklace.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	cards.appendChild(card);
+	cardsColiere.appendChild(card);
 }

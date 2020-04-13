@@ -71,31 +71,39 @@ const rings = [
 		price:'$2,402.10'
 	},
 ]
-const cards = document.querySelector('.cards');
-let cardIds=[];
-for(let i=0;i<rings.length;i++){
+
+
+const idsInele = JSON.parse(localStorage.getItem('cosInele'));
+const cardsInele = document.querySelector('.cardsInele');
+
+for(let i=0;i<idsInele.length;i++){
 	let card = document.createElement('div');
 	card.setAttribute('class','card');
 	let img = document.createElement('img');
 	img.setAttribute('class','standart-img-size')
 	img.style.margin=0;
 	img.style.padding=0;
-	img.setAttribute('src',`${rings[i].imgUrl}`);
+	img.setAttribute('src',`${rings[idsInele[i]].imgUrl}`);
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
 	let ringName = document.createElement('h3');
-	ringName.innerHTML=rings[i].name;
+	ringName.innerHTML=rings[idsInele[i]].name;
 	let price = document.createElement('p');
-	price.innerHTML=rings[i].price;
+	price.innerHTML=rings[idsInele[i]].price;
 	let icon = document.createElement('img');
-	icon.setAttribute('src','../img/icons/addToCart.png');
+	icon.setAttribute('src','../img/icons/delete.png');
+	icon.setAttribute('class','productInele')
 	icon.style.margin=0;
 
 	icon.onclick=function(){
-		cardIds.push(rings[i].id);
-		localStorage.setItem('cosInele',JSON.stringify(cardIds))
+		const before = idsInele.slice(0,i);
+		const after = idsInele.slice(i+1);
+		const full = before.concat(after);
+		localStorage.setItem('cosInele',JSON.stringify(full));
+		location.reload();
 	}
+
 
 	text.appendChild(ringName);
 	text.appendChild(price);
@@ -104,5 +112,5 @@ for(let i=0;i<rings.length;i++){
 
 	card.appendChild(img);
 	card.appendChild(textBlock);
-	cards.appendChild(card);
+	cardsInele.appendChild(card);
 }
