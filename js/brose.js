@@ -23,6 +23,12 @@ for(let i=0;i<brose.length;i++){
 	img.style.margin=0;
 	img.style.padding=0;
 	img.setAttribute('src',`${brose[i].imgUrl}`);
+	if(i===0){
+	img.setAttribute('class','for-redirect1 standart-img-size');
+	}
+	if(i===1){
+		img.setAttribute('class','for-redirect2 standart-img-size');		
+	}
 	let textBlock = document.createElement('div');
 	textBlock.setAttribute('class','card-text-block');
 	let text = document.createElement('div');
@@ -49,4 +55,14 @@ for(let i=0;i<brose.length;i++){
 	card.appendChild(img);
 	card.appendChild(textBlock);
 	cards.appendChild(card);
+}
+
+const forRedirect1 = document.querySelector('.for-redirect1');
+const forRedirect2 = document.querySelector('.for-redirect2');
+
+forRedirect1.onclick=()=>{
+	window.location.href='../pages/details/detail1.html';
+}
+forRedirect2.onclick=()=>{
+	window.location.href='../pages/details/detail2.html';
 }

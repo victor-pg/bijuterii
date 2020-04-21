@@ -1,0 +1,37 @@
+.detail{
+    width: 100%;
+    text-align: left;
+    font-family: 'Open Sans',sans-serif;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.detail img {
+    width: 30%;
+}
+table{
+    margin-top: 30px;
+    width:100%;
+}
+table tr td{
+    border:1px solid grey;
+    margin: 0;
+    padding: 10px;
+}
+thead{
+    background-color: #F6EDF4;
+    width:100%;
+    text-align: center;
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
+}
+@media screen and (max-width:500px){
+    .detail img{
+        width: 100%;
+    }
+    .detail{
+        padding:10px;
+    }
+}

@@ -121,7 +121,7 @@ nav{
 .buy-button {
 	text-align: right;
 }
-.buy-button button{
+/* .buy-button button{
 	background-color: white;
 	padding:10px;
 	border:1px solid grey;
@@ -136,4 +136,35 @@ nav{
 	background-color: tomato;
 	color:white;
 	border:1px solid transparent;
+} */
+button{
+	background-color: transparent;
+	position: relative;
+	color:#D6A882;
+	margin-top: 20px;
+	margin-right: 20px;
+	padding:16px 45px;
+	border:1px solid #D6A882;
+	transition: color 0.3s ease-out 0.3s;
+	font-family: Verdana;
+	cursor: pointer;
+	overflow: hidden;
+	transition: all 0.5s ease-out;
+}
+button::before{
+	content: '';
+	position: absolute;
+	background-color:#D6A882 ;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 0%;
+	transition: all 0.5s ease-out;
+	z-index:-1;
+}
+button:hover::before{
+	width:100%;
+}
+button:hover{
+	color:#F6F4ED;
 }
